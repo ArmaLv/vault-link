@@ -1,7 +1,7 @@
 {
 	"id": "vault-link",
 	"name": "Vault Link",
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"minAppVersion": "1.4.0",
 	"description": "Link files and folders between vaults so they share the same content on disk, with per-file exclude rules for things you want to keep vault-specific (e.g. themes).",
 	"author": "",

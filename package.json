@@ -1,6 +1,6 @@
 {
 	"name": "vault-link",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Link files and folders between Obsidian vaults via symlinks, with per-file exclude rules.",
 	"main": "main.js",
 	"scripts": {

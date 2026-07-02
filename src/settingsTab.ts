@@ -57,7 +57,7 @@ export class VaultLinkSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(section)
-			.setName("This vault's path")
+			.setName("Sync Files/Folders")
 			.setDesc(
 				"File or folder in this vault. Start typing to pick from existing files/folders, including " +
 					this.app.vault.configDir +
@@ -99,11 +99,14 @@ export class VaultLinkSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(section)
-			.setName("Other vault's path")
-			.setDesc("Path relative to the other vault. Leave blank to reuse the same path as above.")
+			.setName("Synced Target")
+			.setDesc(
+				`Destination folder inside the other vault's folder to place "${path.basename(rule.sourcePath) || "the file/folder"}" in. ` +
+					"Leave blank to place it at the root of the other vault's folder."
+			)
 			.addText((t) =>
 				t
-					.setPlaceholder(rule.sourcePath || "Templates")
+					.setPlaceholder("Leave blank for vault root")
 					.setValue(rule.targetPath)
 					.onChange(async (v) => {
 						rule.targetPath = v.trim();
