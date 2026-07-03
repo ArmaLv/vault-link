@@ -18,7 +18,6 @@ export class VaultLinkSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 		containerEl.empty();
 
-		new Setting(containerEl).setName("Vault Link").setHeading();
 		containerEl.createEl("p", {
 			text: "Link a file or folder in this vault to a file or folder in another vault. Linked entries share the same content on disk. Excluded entries stay independent in each vault. Links are kept in sync automatically on vault load, on file changes, and whenever you edit a rule.",
 		});
@@ -70,9 +69,9 @@ export class VaultLinkSettingTab extends PluginSettingTab {
 						rule.sourcePath = v.trim();
 						await this.plugin.saveSettings();
 					});
-				new VaultPathSuggest(this.app, t.inputEl, this.plugin.vaultBasePath, async (chosen) => {
+				new VaultPathSuggest(this.app, t.inputEl, this.plugin.vaultBasePath, (chosen) => {
 					rule.sourcePath = chosen;
-					await this.plugin.saveSettings();
+					void this.plugin.saveSettings();
 				});
 			});
 

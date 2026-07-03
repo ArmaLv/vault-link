@@ -1,6 +1,6 @@
 {
 	"name": "vault-link",
-	"version": "0.1.2",
+	"version": "0.1.5",
 	"description": "Link files and folders between Obsidian vaults via symlinks, with per-file exclude rules.",
 	"main": "main.js",
 	"scripts": {
@@ -11,9 +11,10 @@
 	"keywords": [],
 	"author": "ArmaLv",
 	"license": "MIT",
+	"dependencies": {
+		"@types/node": "^20.11.0"
+	},
 	"devDependencies": {
-		"@types/node": "^20.11.0",
-		"builtin-modules": "3.3.0",
 		"esbuild": "0.19.11",
 		"obsidian": "latest",
 		"tslib": "2.6.2",

@@ -1,9 +1,9 @@
 import { Notice } from "obsidian";
+import { remote } from "electron";
 
 export async function pickFolder(defaultPath?: string): Promise<string | null> {
 	try {
-		const electron = require("electron");
-		const result = await electron.remote.dialog.showOpenDialog({
+		const result = await remote.dialog.showOpenDialog({
 			defaultPath,
 			properties: ["openDirectory"],
 		});

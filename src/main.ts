@@ -25,7 +25,7 @@ export default class VaultLinkPlugin extends Plugin {
 
 		this.addCommand({
 			id: "sync-all-links",
-			name: "Sync all vault links",
+			name: "Sync all links",
 			callback: () => this.syncAll(),
 		});
 
@@ -94,7 +94,7 @@ export default class VaultLinkPlugin extends Plugin {
 			try {
 				const watcher = fs.watch(abs, { recursive: true }, () => this.requestSync());
 				this.configWatchers.set(rule.id, watcher);
-			} catch (e) {
+			} catch {
 				// "recursive" isn't supported on Linux in older Node versions; fall back to shallow watching.
 				try {
 					const watcher = fs.watch(abs, () => this.requestSync());
