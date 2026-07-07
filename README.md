@@ -12,6 +12,9 @@ Vault Link is an Obsidian plugin that links a file or folder in this vault to a 
 6. Click "Sync now" to link them. From then on, links are kept in sync automatically.
 7. Use "Detach (unlink)" if you ever want to break the link and make both copies independent again.
 
+## Upcoming
+
+- [ ] Block sync from target
 
 ## Known Problems
 
