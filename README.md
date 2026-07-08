@@ -33,8 +33,3 @@ Each link has a **Default sync direction** that applies to any file/folder that 
 - **One-way**: this vault is authoritative. Syncing only ever copies from here to the target vault. Edits made directly in the target vault are overwritten on the next sync, and files created only in the target vault are never pulled into this vault. Useful when the target is more of a read-only mirror (e.g. publishing notes out) rather than a second vault you edit day-to-day.
 
 One-way content edits are picked up automatically once things have been quiet for a few seconds, rather than on every keystroke, so it doesn't compete with active typing.
-
-## Notes
-
-- On Windows, creating file symlinks may require enabling Developer Mode (Settings > Privacy & Security > For developers) or running Obsidian as administrator. Folder links use junctions instead, which don't need this.
-- Two-way conflicts (both sides already have independent real files) are reported rather than resolved automatically — check the console for details.
