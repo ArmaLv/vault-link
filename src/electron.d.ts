@@ -8,6 +8,9 @@ declare module "electron" {
 		filePaths: string[];
 	}
 	export const remote: {
+		app: {
+			getPath(name: string): string;
+		};
 		dialog: {
 			showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
 		};

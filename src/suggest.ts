@@ -1,12 +1,10 @@
 import { AbstractInputSuggest, App } from "obsidian";
-import * as fs from "fs";
-import * as path from "path";
+import { KnownVault, listKnownVaults } from "./vaultList";
 
 export class VaultPathSuggest extends AbstractInputSuggest<string> {
 	constructor(
 		app: App,
 		textInputEl: HTMLInputElement,
-		private vaultBasePath: string,
 		private onPick: (path: string) => void
 	) {
 		super(app, textInputEl);
@@ -14,9 +12,7 @@ export class VaultPathSuggest extends AbstractInputSuggest<string> {
 
 	protected getSuggestions(query: string): string[] {
 		const q = query.toLowerCase();
-		const indexed = this.app.vault.getAllLoadedFiles().map((f) => f.path);
-		const configPaths = this.listConfigCandidates();
-		const all = Array.from(new Set([...indexed, ...configPaths]));
+		const all = this.app.vault.getAllLoadedFiles().map((f) => f.path);
 		return all.filter((p) => p.length > 0 && p.toLowerCase().contains(q)).slice(0, 100);
 	}
 
@@ -29,32 +25,33 @@ export class VaultPathSuggest extends AbstractInputSuggest<string> {
 		this.onPick(value);
 		this.close();
 	}
+}
 
-	/** Lists the config dir plus a couple of levels of children, e.g. ".obsidian/themes/MyTheme". */
-	private listConfigCandidates(): string[] {
-		const configDir = this.app.vault.configDir;
-		const results: string[] = [configDir];
-		const walk = (relDir: string, depth: number) => {
-			if (depth <= 0) return;
-			let names: string[];
-			try {
-				names = fs.readdirSync(path.join(this.vaultBasePath, relDir));
-			} catch {
-				return;
-			}
-			for (const name of names) {
-				const rel = `${relDir}/${name}`;
-				results.push(rel);
-				try {
-					if (fs.statSync(path.join(this.vaultBasePath, rel)).isDirectory()) {
-						walk(rel, depth - 1);
-					}
-				} catch {
-					/* skip unreadable entries */
-				}
-			}
-		};
-		walk(configDir, 2);
-		return results;
+export class VaultFolderSuggest extends AbstractInputSuggest<KnownVault> {
+	constructor(
+		app: App,
+		textInputEl: HTMLInputElement,
+		private currentVaultPath: string,
+		private onPick: (vault: KnownVault) => void
+	) {
+		super(app, textInputEl);
+	}
+
+	protected getSuggestions(query: string): KnownVault[] {
+		const q = query.toLowerCase();
+		return listKnownVaults(this.currentVaultPath).filter(
+			(v) => v.name.toLowerCase().contains(q) || v.path.toLowerCase().contains(q)
+		);
+	}
+
+	renderSuggestion(value: KnownVault, el: HTMLElement): void {
+		el.createDiv({ text: value.name });
+		el.createEl("small", { text: value.path });
+	}
+
+	selectSuggestion(value: KnownVault): void {
+		this.setValue(value.path);
+		this.onPick(value);
+		this.close();
 	}
 }

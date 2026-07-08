@@ -1,0 +1,103 @@
+.vault-link-quickstart {
+	background-color: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	padding: var(--size-4-4);
+	margin-bottom: var(--size-4-4);
+}
+
+.vault-link-quickstart p:first-child {
+	margin-top: 0;
+	font-weight: var(--font-medium);
+}
+
+.vault-link-quickstart ol {
+	margin-bottom: 0;
+	padding-inline-start: var(--size-4-5);
+}
+
+.vault-link-rule {
+	background-color: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	padding: var(--size-4-4);
+	margin-bottom: var(--size-4-4);
+}
+
+.vault-link-rule .setting-item {
+	flex-wrap: wrap;
+	row-gap: var(--size-4-2);
+	margin: 0 0 5px 0;
+	padding-left: var(--size-4-2);
+	padding-right: var(--size-4-2);
+}
+
+.vault-link-rule .setting-item:last-of-type {
+	margin-bottom: 0;
+}
+
+.vault-link-rule .setting-item-control {
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	row-gap: var(--size-4-2);
+}
+
+.vault-link-rule > summary {
+	cursor: pointer;
+	font-weight: var(--font-medium);
+	font-size: var(--font-ui-medium);
+	padding: var(--size-4-1) 0;
+}
+
+.vault-link-rule[open] > summary {
+	margin-bottom: var(--size-4-2);
+	padding-bottom: var(--size-4-3);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.vault-link-tag {
+	color: var(--text-muted);
+	font-weight: var(--font-normal);
+	font-size: var(--font-ui-smaller);
+}
+
+.vault-link-item {
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	padding: var(--size-4-2) var(--size-4-3);
+	margin: var(--size-4-3) 0;
+}
+
+.vault-link-item > summary {
+	cursor: pointer;
+	font-weight: var(--font-medium);
+	padding: var(--size-4-1) var(--size-4-2);
+}
+
+.vault-link-item[open] > summary {
+	margin-bottom: var(--size-4-2);
+	padding-bottom: var(--size-4-2);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.vault-link-item .setting-item {
+	flex-wrap: wrap;
+	row-gap: var(--size-4-2);
+	margin: 0 0 5px 0;
+	padding: var(--size-4-2);
+}
+
+.vault-link-item .setting-item:first-of-type {
+	border-top: none;
+}
+
+.vault-link-item .setting-item:last-of-type {
+	margin-bottom: 0;
+}
+
+.vault-link-item .setting-item-control {
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	row-gap: var(--size-4-2);
+}

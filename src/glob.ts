@@ -27,7 +27,6 @@ export function isExcluded(relativePath: string, patterns: string[]): boolean {
 		if (!trimmed) return false;
 		const normalizedPattern = trimmed.replace(/\\/g, "/");
 		if (globToRegExp(normalizedPattern).test(normalized)) return true;
-		// Also match if the pattern targets just the file/folder name at any depth.
 		const baseName = normalized.split("/").pop() ?? normalized;
 		return globToRegExp(normalizedPattern).test(baseName);
 	});
