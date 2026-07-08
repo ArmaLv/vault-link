@@ -1,9 +1,9 @@
 {
 	"id": "vault-link",
 	"name": "Vault Link",
-	"version": "0.1.5",
+	"version": "0.2.1",
 	"minAppVersion": "1.4.10",
-	"description": "Link files and folders between vaults so they share the same content on disk, with per-file exclude rules for things you want to keep vault-specific (e.g. themes).",
+	"description": "Link a whole vault, or just specific files/folders, to another vault so they share the same content on disk. Choose one-way or two-way sync per item, and exclude anything you want to keep vault-specific (e.g. themes).",
 	"author": "ArmaLv",
 	"authorUrl": "https://github.com/ArmaLv",
 	"isDesktopOnly": true
